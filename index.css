@@ -1,0 +1,52 @@
+* {
+    margin: auto;
+    padding: auto;
+    box-sizing: border-box;
+
+  
+}
+
+body {
+ background-image:url(images/note.jpg) ;
+ 
+    background-size:cover;
+    color: #333;
+    line-height: 1.6;
+
+}
+.form {
+    background: transparent;
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 20px;
+    width: 800Px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    margin-top: 150px;}
+.form a{
+  border: 1px solid #000000;
+  border-radius: 20px;
+    color: #000000;
+    text-align: center;
+    text-decoration: none;
+ padding: 10px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-transform: uppercase;
+    gap: 30px;
+}
+.form a:hover{
+    color: #cc9e76;
+    font-weight: bold;
+    border: 1px solid #cc9e76;
+
+    transform: scale(1.1);
+}
+.form a div img{
+     width: 300px;
+     border-radius: 20px;
+     border: #000000 1px solid;
+}
