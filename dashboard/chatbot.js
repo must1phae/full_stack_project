@@ -1,5 +1,5 @@
 const GEMINI_API_KEY = 'AIzaSyD7tSYmmRZlYJ02_0_vLo1idKQIO7VhnDw'; // 🔐 Remplace par ta clé Gemini
-
+ 
 document.addEventListener('DOMContentLoaded', () => {
     const chatbotIcon = document.getElementById('chatbotIcon');
     const chatbotWindow = document.getElementById('chatbotWindow');

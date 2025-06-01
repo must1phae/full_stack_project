@@ -453,9 +453,10 @@ textarea{
     z-index: 995;
 }
 #chatbotIcon:hover {
-    background-color: #937153;
-    transform: scale(1.1);
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    backdrop-filter: blur(20px);
+    transition: background-color 0.3s ease-in-out;
+    
+    box-shadow: 0 0 20px rgba(123, 86, 5, 0.861);
 }
 
 /* Fenêtre du chatbot */
@@ -467,7 +468,7 @@ textarea{
     right: 20px;
     width: 320px;
     height: 400px;
-    background: #ffffff;
+    background: transparent;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -478,8 +479,8 @@ textarea{
 
 /* Bouton pour fermer la fenêtre */
 #closeChatbot {
-    background-color: #f5f5f5;
-    color: #333;
+    background-color: transparent;
+    color: white;
     padding: 10px;
     text-align: right;
     cursor: pointer;
@@ -487,6 +488,8 @@ textarea{
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom: 1px solid #ddd;
+    backdrop-filter: blur(30px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Contenu du chatbot */
@@ -494,7 +497,9 @@ textarea{
     flex: 1;
     padding: 10px;
     overflow-y: auto;
-    background-color: #fafafa;
+    background-color: transparent;
+    backdrop-filter: blur(30px);
+    
 }
 
 /* Réponse du chatbot */
@@ -502,14 +507,18 @@ textarea{
     margin-bottom: 15px;
     white-space: pre-wrap;
     font-size: 14px;
-    color: #333;
+    color: white;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
 }
 
 /* Section des actions */
 #chatbotActions {
     padding: 10px;
-    border-top: 1px solid #ddd;
-    background-color: #f9f9f9;
+    
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -518,16 +527,17 @@ textarea{
 /* Boutons d'action */
 .chatbot-action {
     padding: 8px;
-    background-color: #007bff;
+    background-color: #cc9e76;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 10px;
     cursor: pointer;
     text-align: center;
     transition: background-color 0.3s;
     font-size: 14px;
+     
 }
 
 .chatbot-action:hover {
-    background-color: #0056b3;
+    background-color: #4a3726;
 }
