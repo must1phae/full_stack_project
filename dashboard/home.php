@@ -9,8 +9,10 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     //si l'utilisateur est deja connnecter il il peut entrer directement vers admin.php 
     exit;
 } 
- 
-$result = mysqli_query($conn, "SELECT * FROM module");
+
+
+// Récupération des modules
+$result = mysqli_query($conn, "SELECT * FROM module ORDER BY nom ASC");
 $modules = [];
 if ($result && mysqli_num_rows($result) > 0) {
     while ($module = mysqli_fetch_assoc($result)) {

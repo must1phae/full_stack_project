@@ -16,6 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (mysqli_num_rows($result) === 1) {
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username;
+       
+ 
         echo "<script>alert('Connection successful');</script>";
         header("Location: dashboard/home.php");
         exit;

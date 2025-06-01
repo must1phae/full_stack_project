@@ -34,7 +34,7 @@ if (isset($_GET['id_M'])) {
         <input type="text" name="nom" value="<?= htmlspecialchars($module['nom']) ?>" required>
         <button type="submit">Enregistrer</button>
     </form>
-    <a href="dashboard.php">Annuler</a>
+    <a href="home.php">Annuler</a>
 
 <?php
  
@@ -73,7 +73,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         <input type="hidden" name="id_M" value="<?= $note['id'] ?>">
         <button type="submit">Enregistrer</button>
     </form>
-    <a href="anote.php?id_M=<?= $note['id'] ?>">Annuler</a>
+    <a class="annuler" href="anote.php?id_M=<?= $note['id'] ?>">Annuler</a>
 
 <?php
 } else {
