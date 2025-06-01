@@ -13,11 +13,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = mysqli_stmt_get_result($stmt);
 
     // Check if a matching record exists
-    if (mysqli_num_rows($result) === 1) {
-        $_SESSION['loggedin'] = true;
-        $_SESSION['username'] = $username;
-       
- 
+  // Dans la partie succès d'authentification
+if (mysqli_num_rows($result) === 1) {
+    $user = mysqli_fetch_assoc($result); // Récupérer les données de l'étudiant
+    $_SESSION['loggedin'] = true;
+    $_SESSION['username'] = $username;
+    $_SESSION['id_et'] = $user['id']; // Stocker l'ID de l'étudiant
+    // ... reste du code ...
+
         echo "<script>alert('Connection successful');</script>";
         header("Location: dashboard/home.php");
         exit;

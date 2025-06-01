@@ -3,17 +3,21 @@ include '../connect.php'; // Make sure this sets up $conn as a mysqli connection
  
 session_start();
 
-// Vérifie si l'utilisateur est connecté
+// Après session_start()
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location:../login.php");
-    //si l'utilisateur est deja connnecter il il peut entrer directement vers admin.php 
     exit;
-} 
- 
+}
+
+$id_et = $_SESSION['id_et']; // Récupérer l'ID de l'étudiant
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nom = $_POST['nom'];
-    $stmt = mysqli_prepare($conn, "INSERT INTO module (nom) VALUES (?)");
-    mysqli_stmt_bind_param($stmt, "s", $nom);
+    // Lier le module à l'étudiant connecté
+    $stmt = mysqli_prepare($conn, "INSERT INTO module (nom, id_et) VALUES (?, ?)");
+    mysqli_stmt_bind_param($stmt, "si", $nom, $id_et);
+    // ... reste du code ...
+
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header('Location: home.php');

@@ -6,17 +6,22 @@ session_start();
 // Vérifie si l'utilisateur est connecté
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location:../login.php");
-    //si l'utilisateur est deja connnecter il il peut entrer directement vers admin.php 
     exit;
 } 
 
+$id_et = $_SESSION['id_et']; 
 
-// Récupération des modules
-$result = mysqli_query($conn, "SELECT * FROM module ORDER BY nom ASC");
+// Requête modifiée avec filtre
+$stmt = mysqli_prepare($conn, "SELECT * FROM module WHERE id_et = ? ORDER BY nom ASC");
+mysqli_stmt_bind_param($stmt, "i", $id_et);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+
+// CORRECTION : Récupération des résultats dans un tableau
 $modules = [];
-if ($result && mysqli_num_rows($result) > 0) {
-    while ($module = mysqli_fetch_assoc($result)) {
-        $modules[] = $module; // Ne récupère plus les notes ici
+if ($result) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $modules[] = $row;
     }
 }
 ?>
@@ -52,11 +57,8 @@ if ($result && mysqli_num_rows($result) > 0) {
          <a href="edit.php?id_M=<?= $module['id_M'] ?>">✏️ Modifier</a>
     <a class="delete" href="delete.php?delete_module=<?= $module['id_M'] ?>" onclick="return confirm('Supprimer ce module et toutes ses notes ?')">Supprimer le module</a>
    
- 
-   
     <hr>
 </div>
-
         <?php endforeach; ?>
     <?php endif; ?>
 </article>
